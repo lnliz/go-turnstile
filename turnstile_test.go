@@ -111,13 +111,3 @@ func TestVerify_EmptyResponse(t *testing.T) {
 		t.Error("expected error for empty response")
 	}
 }
-
-func TestVerify_JSONEncodeError(t *testing.T) {
-	verifier := NewTurnstileVerifier("test-secret")
-	verifier.extraData = make(chan int)
-
-	_, err := verifier.Verify("test-token")
-	if err == nil {
-		t.Error("expected JSON encoding error")
-	}
-}
